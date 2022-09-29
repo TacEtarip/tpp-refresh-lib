@@ -14,7 +14,6 @@ class TppLibRefreshService {
         // this.port_credenciales=config.url//"https://7wm9bk5qsj.execute-api.us-east-1.amazonaws.com/dev"
     }
     intercept(req, next) {
-        console.log('xx', localStorage.getItem('idToken'));
         const token = localStorage.getItem('idToken');
         if (!token) {
             return next.handle(req);
@@ -53,7 +52,6 @@ class TppLibRefreshService {
         return this._http.post(this.config.url + '/oauth/refresh', refreshToken);
     }
     setDataToken(data) {
-        console.log('data de token' + data);
         let resp = data;
         let usuario_inicio = resp;
         let tokenData = usuario_inicio.tokenData;
